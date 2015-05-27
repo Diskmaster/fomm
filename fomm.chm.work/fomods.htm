@@ -1,0 +1,30 @@
+<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>fomods</title></head>
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
+<font face="Arial" size="3" color="#000000"><b>fomods
+<br>
+</b></font>
+
+</td><td align="right"><font face="Arial" size="2"><a href="thepackagemanagerform.htm">[Previous]</a> <a href="falloutmodmanager.htm">[Main]</a> <a href="scriptfunctions.htm">[Next]</a></font></td></tr></table><br>
+
+<font face="Arial" size="2" color="#000000">fomod's are plain .zip files. In the absense of any fancy scripting, they should be structured so that extracting them into fallout's data folder installs them correctly. Any fomod specific data goes into a folder called 'fomod'.
+<br>
+
+<br>
+Files which fomm expects to find in here are 'info.xml', which contains the mod name, version, author, etc. 'screenshot.jpg' (or .bmp, or .png) which contains a descriptive screenshot of the mod, and 'script.cs' which contains the mod installation script. Any of these files can be missing without causing problems, which allows fomm to install completely normal zip's with no additional work as long as they're structured correctly.
+<br>
+
+<br>
+Scripting is done in C#. If you provide a script, fomm won't automatically install anything from the fomod; the script must install whatever it wants to itself. (See the Scripting examples chapter for some examples of scripts.)
+<br>
+
+<br>
+Readme's should be in the root of the zip file, and be named 'readme - &lt;name of the fomod without the file extension&gt;.txt' (or .rtf, or .html). i.e. The readme of a fomod called 'test.fomod' would be called 'readme - test.txt'
+<br>
+
+<br>
+Fomods by default are located in the subdirectory 'mods' in whichever directory fomm.exe exists in. There's no option inside fomm to change that, but you can pick a new directory by manually editing 'fomm\settings.xml'. Add a new xml node '&lt;strValue name="FomodDir"&gt;your new path goes here&lt;/strValue&gt;'.
+<br>
+</font>
+
+</body></html>
