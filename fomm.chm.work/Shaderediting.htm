@@ -1,64 +1,145 @@
-<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>Shader editing</title></head>
-<body bgcolor="#FFFFFF">
-<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
-<font face="Arial" size="3" color="#000000"><b>Shader editing
-<br>
-</b></font>
-
-</td><td align="right"><font face="Arial" size="2"><a href="basicscript.htm">[Previous]</a> <a href="falloutmodmanager.htm">[Main]</a> <a href="customformsandiniediting.htm">[Next]</a></font></td></tr></table><br>
-
-<font face="Courier New" size="2" color="#000000"><font face="Courier New" size="2" color="#008000">//This&nbsp;script&nbsp;presents&nbsp;the&nbsp;user&nbsp;with&nbsp;a&nbsp;choice&nbsp;of&nbsp;shaders,&nbsp;and&nbsp;then&nbsp;replaces&nbsp;the&nbsp;vats&nbsp;shader&nbsp;with&nbsp;the&nbsp;selected&nbsp;one
-<br>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <meta name="generator" content="Help &amp; Manual 2.7.0">
+    <title>Shader editing</title>
+  </head>
+  <body bgcolor="#FFFFFF">
+    <table bgcolor="#C0C0C0" border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="left">
+            <font color="#000000" face="Arial" size="3"><b>Shader editing
+              </b></font>
+          </td>
+          <td align="right"><font face="Arial" size="2"><a href="basicscript.htm">[Previous]</a>
+              <a href="falloutmodmanager.htm">[Main]</a> <a href="customformsandiniediting.htm">[Next]</a></font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font color="#000000" face="Courier New" size="2"><font color="#008000" face="Courier New"
+        size="2">//This&nbsp;script&nbsp;presents&nbsp;the&nbsp;user&nbsp;with&nbsp;a&nbsp;choice&nbsp;of&nbsp;shaders,&nbsp;and&nbsp;then&nbsp;replaces&nbsp;the&nbsp;vats&nbsp;shader&nbsp;with&nbsp;the&nbsp;selected&nbsp;one
+        <br>
 //It&nbsp;should&nbsp;be&nbsp;attached&nbsp;to&nbsp;a&nbsp;fomod&nbsp;containing&nbsp;a&nbsp;set&nbsp;of&nbsp;suitable&nbsp;.pso&nbsp;and&nbsp;.jpg&nbsp;files&nbsp;in&nbsp;its&nbsp;root&nbsp;directory
-<br>
+        <br>
 //When&nbsp;this&nbsp;fomod&nbsp;is&nbsp;deactivated,&nbsp;fomm&nbsp;will&nbsp;automatically&nbsp;restore&nbsp;the&nbsp;original&nbsp;shader
-<br>
-</font><font face="Courier New" size="2" color="#000000"><font face="Courier New" size="2" color="#0000FF">
-<br>
-using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System.Collections.Generic;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;fomm.Scripting;
-<br>
-
-<br>
-<font face="Courier New" size="2" color="#0000FF">class</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">Script</font></font><font face="Courier New" size="2" color="#000000">&nbsp;:&nbsp;<font face="Courier New" size="2" color="#2B91AF">BaseScript</font></font><font face="Courier New" size="2" color="#000000">&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">public</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">static</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">bool</font></font><font face="Courier New" size="2" color="#000000">&nbsp;OnActivate()&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">[]&nbsp;files=GetFomodFileList();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">List</font></font><font face="Courier New" size="2" color="#000000">&lt;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">&gt;&nbsp;shaders=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">List</font></font><font face="Courier New" size="2" color="#000000">&lt;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">&gt;();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">foreach</font></font><font face="Courier New" size="2" color="#000000">(<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">&nbsp;s&nbsp;<font face="Courier New" size="2" color="#0000FF">in</font></font><font face="Courier New" size="2" color="#000000">&nbsp;files)&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">if</font></font><font face="Courier New" size="2" color="#000000">(s.EndsWith(<font face="Courier New" size="2" color="#A31515">".pso"</font></font><font face="Courier New" size="2" color="#000000">))&nbsp;shaders.Add(s);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files=shaders.ToArray();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">[]&nbsp;previews=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">[files.Length];
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">for</font></font><font face="Courier New" size="2" color="#000000">(<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">&nbsp;i=0;i&lt;files.Length;i++)&nbsp;previews[i]=System.IO.<font face="Courier New" size="2" color="#2B91AF">Path</font></font><font face="Courier New" size="2" color="#000000">.ChangeExtension(files[i],&nbsp;<font face="Courier New" size="2" color="#A31515">".jpg"</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">[]&nbsp;selected=Select(files,&nbsp;previews,&nbsp;<font face="Courier New" size="2" color="#0000FF">null</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"Select&nbsp;a&nbsp;shader"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">if</font></font><font face="Courier New" size="2" color="#000000">(selected==<font face="Courier New" size="2" color="#0000FF">null</font></font><font face="Courier New" size="2" color="#000000">)&nbsp;<font face="Courier New" size="2" color="#0000FF">return</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">string</font></font><font face="Courier New" size="2" color="#000000">&nbsp;package=GetRendererInfo(<font face="Courier New" size="2" color="#A31515">"Shader&nbsp;Package"</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">if</font></font><font face="Courier New" size="2" color="#000000">(package==<font face="Courier New" size="2" color="#0000FF">null</font></font><font face="Courier New" size="2" color="#000000">)&nbsp;<font face="Courier New" size="2" color="#0000FF">return</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditShader(<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">.Parse(package),&nbsp;<font face="Courier New" size="2" color="#A31515">"ISIFVATSSCANBLEND.pso"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;GetFileFromFomod(files[selected[0]]));
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">return</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">true</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br>
-}</font><font face="Arial" size="2" color="#000000">
-<br>
-</font></font>
-
-</body></html>
+      </font><font color="#000000" face="Courier New" size="2"><font color="#0000FF"
+          face="Courier New" size="2">
+          <br>
+          using</font></font><font color="#000000" face="Courier New" size="2">&nbsp;System;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;System.Collections.Generic;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;fomm.Scripting;
+        <br>
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">class</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">Script</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;:&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">BaseScript</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New" size="2">public</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">static</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">bool</font></font><font color="#000000" face="Courier New" size="2">&nbsp;OnActivate()&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">string</font></font><font color="#000000" face="Courier New"
+        size="2">[]&nbsp;files=GetFomodFileList();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">List</font></font><font color="#000000" face="Courier New" size="2">&lt;<font
+          color="#0000FF" face="Courier New" size="2">string</font></font><font
+        color="#000000" face="Courier New" size="2">&gt;&nbsp;shaders=<font color="#0000FF"
+          face="Courier New" size="2">new</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;<font color="#2B91AF" face="Courier New" size="2">List</font></font><font
+        color="#000000" face="Courier New" size="2">&lt;<font color="#0000FF" face="Courier New"
+          size="2">string</font></font><font color="#000000" face="Courier New"
+        size="2">&gt;();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">foreach</font></font><font color="#000000" face="Courier New"
+        size="2">(<font color="#0000FF" face="Courier New" size="2">string</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;s&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">in</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;files)&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">if</font></font><font color="#000000"
+        face="Courier New" size="2">(s.EndsWith(<font color="#A31515" face="Courier New"
+          size="2">".pso"</font></font><font color="#000000" face="Courier New"
+        size="2">))&nbsp;shaders.Add(s);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files=shaders.ToArray();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">string</font></font><font color="#000000" face="Courier New"
+        size="2">[]&nbsp;previews=<font color="#0000FF" face="Courier New" size="2">new</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">string</font></font><font color="#000000"
+        face="Courier New" size="2">[files.Length];
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">for</font></font><font color="#000000" face="Courier New" size="2">(<font
+          color="#0000FF" face="Courier New" size="2">int</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;i=0;i&lt;files.Length;i++)&nbsp;previews[i]=System.IO.<font
+          color="#2B91AF" face="Courier New" size="2">Path</font></font><font color="#000000"
+        face="Courier New" size="2">.ChangeExtension(files[i],&nbsp;<font color="#A31515"
+          face="Courier New" size="2">".jpg"</font></font><font color="#000000"
+        face="Courier New" size="2">);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">int</font></font><font color="#000000" face="Courier New" size="2">[]&nbsp;selected=Select(files,&nbsp;previews,&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">null</font></font><font color="#000000"
+        face="Courier New" size="2">,&nbsp;<font color="#A31515" face="Courier New"
+          size="2">"Select&nbsp;a&nbsp;shader"</font></font><font color="#000000"
+        face="Courier New" size="2">,&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">false</font></font><font color="#000000" face="Courier New" size="2">);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">if</font></font><font color="#000000" face="Courier New" size="2">(selected==<font
+          color="#0000FF" face="Courier New" size="2">null</font></font><font color="#000000"
+        face="Courier New" size="2">)&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">return</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;<font color="#0000FF" face="Courier New" size="2">false</font></font><font
+        color="#000000" face="Courier New" size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">string</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;package=GetRendererInfo(<font color="#A31515" face="Courier New"
+          size="2">"Shader&nbsp;Package"</font></font><font color="#000000" face="Courier New"
+        size="2">);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">if</font></font><font color="#000000" face="Courier New" size="2">(package==<font
+          color="#0000FF" face="Courier New" size="2">null</font></font><font color="#000000"
+        face="Courier New" size="2">)&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">return</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;<font color="#0000FF" face="Courier New" size="2">false</font></font><font
+        color="#000000" face="Courier New" size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditShader(<font color="#0000FF"
+          face="Courier New" size="2">int</font></font><font color="#000000" face="Courier New"
+        size="2">.Parse(package),&nbsp;<font color="#A31515" face="Courier New"
+          size="2">"ISIFVATSSCANBLEND.pso"</font></font><font color="#000000" face="Courier New"
+        size="2">,&nbsp;GetFileFromFomod(files[selected[0]]));
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">return</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;<font color="#0000FF" face="Courier New" size="2">true</font></font><font
+        color="#000000" face="Courier New" size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>
+        }</font><font color="#000000" face="Arial" size="2">
+      </font></font>
+  </body>
+</html>

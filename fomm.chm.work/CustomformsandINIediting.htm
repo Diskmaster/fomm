@@ -1,140 +1,249 @@
-<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>Custom forms and INI editing</title></head>
-<body bgcolor="#FFFFFF">
-<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
-<font face="Arial" size="3" color="#000000"><b>Custom forms and INI editing
-<br>
-</b></font>
-
-</td><td align="right"><font face="Arial" size="2"><a href="shaderediting.htm">[Previous]</a> <a href="falloutmodmanager.htm">[Main]</a> <a href="savegamelist.htm">[Next]</a></font></td></tr></table><br>
-
-<font face="Courier New" size="2" color="#000000"><font face="Courier New" size="2" color="#008000">//This&nbsp;script&nbsp;generates&nbsp;a&nbsp;custom&nbsp;dialog,&nbsp;and&nbsp;uses&nbsp;it&nbsp;to&nbsp;allow&nbsp;the&nbsp;user&nbsp;to&nbsp;change&nbsp;some&nbsp;ini&nbsp;settings
-<br>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <meta name="generator" content="Help &amp; Manual 2.7.0">
+    <title>Custom forms and INI editing</title>
+  </head>
+  <body bgcolor="#FFFFFF">
+    <table bgcolor="#C0C0C0" border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="left">
+            <font color="#000000" face="Arial" size="3"><b>Custom forms and INI
+                editing
+              </b></font>
+          </td>
+          <td align="right"><font face="Arial" size="2"><a href="shaderediting.htm">[Previous]</a>
+              <a href="falloutmodmanager.htm">[Main]</a> <a href="savegamelist.htm">[Next]</a></font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font color="#000000" face="Courier New" size="2"><font color="#008000" face="Courier New"
+        size="2">//This&nbsp;script&nbsp;generates&nbsp;a&nbsp;custom&nbsp;dialog,&nbsp;and&nbsp;uses&nbsp;it&nbsp;to&nbsp;allow&nbsp;the&nbsp;user&nbsp;to&nbsp;change&nbsp;some&nbsp;ini&nbsp;settings
+        <br>
 //This&nbsp;should&nbsp;be&nbsp;attached&nbsp;to&nbsp;a&nbsp;fomod&nbsp;with&nbsp;no&nbsp;other&nbsp;files,&nbsp;as&nbsp;it&nbsp;doesn't&nbsp;install&nbsp;anything
-<br>
+        <br>
 //This&nbsp;mod&nbsp;is&nbsp;designed&nbsp;to&nbsp;never&nbsp;show&nbsp;activated,&nbsp;and&nbsp;it&nbsp;specifically&nbsp;tells&nbsp;fomm&nbsp;not&nbsp;to&nbsp;save&nbsp;the&nbsp;old&nbsp;ini&nbsp;values
-<br>
-</font><font face="Courier New" size="2" color="#000000"><font face="Courier New" size="2" color="#0000FF">
-<br>
-using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System.Drawing;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System.Windows.Forms;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;fomm.Scripting;
-<br>
-
-<br>
-<font face="Courier New" size="2" color="#0000FF">class</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">Script</font></font><font face="Courier New" size="2" color="#000000">&nbsp;:&nbsp;<font face="Courier New" size="2" color="#2B91AF">BaseScript</font></font><font face="Courier New" size="2" color="#000000">&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">public</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">static</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">bool</font></font><font face="Courier New" size="2" color="#000000">&nbsp;OnActivate()&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Create&nbsp;a&nbsp;new&nbsp;custom&nbsp;form&nbsp;and&nbsp;some&nbsp;UI&nbsp;elements
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">Form</font></font><font face="Courier New" size="2" color="#000000">&nbsp;f=CreateCustomForm();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">TextBox</font></font><font face="Courier New" size="2" color="#000000">&nbsp;tbWidth=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">TextBox</font></font><font face="Courier New" size="2" color="#000000">();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">TextBox</font></font><font face="Courier New" size="2" color="#000000">&nbsp;tbHeight=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">TextBox</font></font><font face="Courier New" size="2" color="#000000">();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">CheckBox</font></font><font face="Courier New" size="2" color="#000000">&nbsp;cbWindowed=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">CheckBox</font></font><font face="Courier New" size="2" color="#000000">();
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#2B91AF">Button</font></font><font face="Courier New" size="2" color="#000000">&nbsp;bApply=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">Button</font></font><font face="Courier New" size="2" color="#000000">();
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Attach&nbsp;a&nbsp;handler&nbsp;that&nbsp;will&nbsp;fire&nbsp;when&nbsp;the&nbsp;apply&nbsp;button&nbsp;is&nbsp;clicked
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Click&nbsp;+=&nbsp;<font face="Courier New" size="2" color="#0000FF">delegate</font></font><font face="Courier New" size="2" color="#000000">(<font face="Courier New" size="2" color="#0000FF">object</font></font><font face="Courier New" size="2" color="#000000">&nbsp;sender,&nbsp;<font face="Courier New" size="2" color="#2B91AF">EventArgs</font></font><font face="Courier New" size="2" color="#000000">&nbsp;args)
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">&nbsp;width,&nbsp;height;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Check&nbsp;that&nbsp;the&nbsp;width&nbsp;and&nbsp;height&nbsp;are&nbsp;valid&nbsp;integers
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">if</font></font><font face="Courier New" size="2" color="#000000">(!<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">.TryParse(tbWidth.Text,&nbsp;<font face="Courier New" size="2" color="#0000FF">out</font></font><font face="Courier New" size="2" color="#000000">&nbsp;width)||!<font face="Courier New" size="2" color="#0000FF">int</font></font><font face="Courier New" size="2" color="#000000">.TryParse(tbHeight.Text,&nbsp;<font face="Courier New" size="2" color="#0000FF">out</font></font><font face="Courier New" size="2" color="#000000">&nbsp;height))&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBox(<font face="Courier New" size="2" color="#A31515">"Invalid&nbsp;width&nbsp;or&nbsp;height&nbsp;specified"</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<font face="Courier New" size="2" color="#0000FF">else</font></font><font face="Courier New" size="2" color="#000000">&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Edit&nbsp;the&nbsp;new&nbsp;values&nbsp;into&nbsp;the&nbsp;ini,&nbsp;telling&nbsp;fomm&nbsp;not&nbsp;to&nbsp;save&nbsp;the&nbsp;old&nbsp;ones
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"iSize&nbsp;W"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;width.ToString(),&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"iSize&nbsp;H"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;height.ToString(),&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"bFull&nbsp;Screen"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;cbWindowed.Checked?<font face="Courier New" size="2" color="#A31515">"0"</font></font><font face="Courier New" size="2" color="#000000">:<font face="Courier New" size="2" color="#A31515">"1"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
+      </font><font color="#000000" face="Courier New" size="2"><font color="#0000FF"
+          face="Courier New" size="2">
+          <br>
+          using</font></font><font color="#000000" face="Courier New" size="2">&nbsp;System;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;System.Drawing;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;System.Windows.Forms;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;fomm.Scripting;
+        <br>
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">class</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">Script</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;:&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">BaseScript</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New" size="2">public</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">static</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">bool</font></font><font color="#000000" face="Courier New" size="2">&nbsp;OnActivate()&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Create&nbsp;a&nbsp;new&nbsp;custom&nbsp;form&nbsp;and&nbsp;some&nbsp;UI&nbsp;elements
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#2B91AF" face="Courier New" size="2">Form</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;f=CreateCustomForm();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">TextBox</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;tbWidth=<font color="#0000FF" face="Courier New" size="2">new</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">TextBox</font></font><font color="#000000"
+        face="Courier New" size="2">();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">TextBox</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;tbHeight=<font color="#0000FF" face="Courier New" size="2">new</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">TextBox</font></font><font color="#000000"
+        face="Courier New" size="2">();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">CheckBox</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;cbWindowed=<font color="#0000FF" face="Courier New" size="2">new</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">CheckBox</font></font><font color="#000000"
+        face="Courier New" size="2">();
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">Button</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;bApply=<font color="#0000FF" face="Courier New" size="2">new</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">Button</font></font><font color="#000000"
+        face="Courier New" size="2">();
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Attach&nbsp;a&nbsp;handler&nbsp;that&nbsp;will&nbsp;fire&nbsp;when&nbsp;the&nbsp;apply&nbsp;button&nbsp;is&nbsp;clicked
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Click&nbsp;+=&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">delegate</font></font><font
+        color="#000000" face="Courier New" size="2">(<font color="#0000FF" face="Courier New"
+          size="2">object</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;sender,&nbsp;<font color="#2B91AF" face="Courier New" size="2">EventArgs</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;args)
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">int</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;width,&nbsp;height;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#008000" face="Courier New" size="2">//Check&nbsp;that&nbsp;the&nbsp;width&nbsp;and&nbsp;height&nbsp;are&nbsp;valid&nbsp;integers
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">if</font></font><font color="#000000"
+        face="Courier New" size="2">(!<font color="#0000FF" face="Courier New" size="2">int</font></font><font
+        color="#000000" face="Courier New" size="2">.TryParse(tbWidth.Text,&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">out</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;width)||!<font color="#0000FF" face="Courier New"
+          size="2">int</font></font><font color="#000000" face="Courier New" size="2">.TryParse(tbHeight.Text,&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">out</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;height))&nbsp;{
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBox(<font
+          color="#A31515" face="Courier New" size="2">"Invalid&nbsp;width&nbsp;or&nbsp;height&nbsp;specified"</font></font><font
+        color="#000000" face="Courier New" size="2">);
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">else</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;{
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#008000" face="Courier New" size="2">//Edit&nbsp;the&nbsp;new&nbsp;values&nbsp;into&nbsp;the&nbsp;ini,&nbsp;telling&nbsp;fomm&nbsp;not&nbsp;to&nbsp;save&nbsp;the&nbsp;old&nbsp;ones
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"iSize&nbsp;W"</font></font><font color="#000000"
+        face="Courier New" size="2">,&nbsp;width.ToString(),&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">false</font></font><font color="#000000" face="Courier New"
+        size="2">);
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"iSize&nbsp;H"</font></font><font color="#000000"
+        face="Courier New" size="2">,&nbsp;height.ToString(),&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">false</font></font><font color="#000000" face="Courier New"
+        size="2">);
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EditPrefsINI(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"bFull&nbsp;Screen"</font></font><font color="#000000"
+        face="Courier New" size="2">,&nbsp;cbWindowed.Checked?<font color="#A31515"
+          face="Courier New" size="2">"0"</font></font><font color="#000000" face="Courier New"
+        size="2">:<font color="#A31515" face="Courier New" size="2">"1"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">false</font></font><font color="#000000" face="Courier New"
+        size="2">);
+        <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Get&nbsp;the&nbsp;original&nbsp;values&nbsp;from&nbsp;the&nbsp;ini
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Text=GetPrefsIniString(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"iSize&nbsp;W"</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Text=GetPrefsIniString(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"iSize&nbsp;H"</font></font><font face="Courier New" size="2" color="#000000">);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Checked=GetPrefsIniInt(<font face="Courier New" size="2" color="#A31515">"Display"</font></font><font face="Courier New" size="2" color="#000000">,&nbsp;<font face="Courier New" size="2" color="#A31515">"bFull&nbsp;Screen"</font></font><font face="Courier New" size="2" color="#000000">)==0;
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Setup&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;form
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Text=<font face="Courier New" size="2" color="#A31515">"Apply"</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Text=<font face="Courier New" size="2" color="#A31515">"Windowed"</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Width=100;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Width=100;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Location=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;Point(10,&nbsp;10);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Location=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;Point(115,&nbsp;10);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Location=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;Point(10,&nbsp;30);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Location=<font face="Courier New" size="2" color="#0000FF">new</font></font><font face="Courier New" size="2" color="#000000">&nbsp;Point(10,&nbsp;55);
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.AutoSize=<font face="Courier New" size="2" color="#0000FF">true</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.AutoSizeMode=<font face="Courier New" size="2" color="#2B91AF">AutoSizeMode</font></font><font face="Courier New" size="2" color="#000000">.GrowAndShrink;
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(tbWidth);
-<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Get&nbsp;the&nbsp;original&nbsp;values&nbsp;from&nbsp;the&nbsp;ini
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Text=GetPrefsIniString(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"iSize&nbsp;W"</font></font><font color="#000000"
+        face="Courier New" size="2">);
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Text=GetPrefsIniString(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"iSize&nbsp;H"</font></font><font color="#000000"
+        face="Courier New" size="2">);
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Checked=GetPrefsIniInt(<font
+          color="#A31515" face="Courier New" size="2">"Display"</font></font><font
+        color="#000000" face="Courier New" size="2">,&nbsp;<font color="#A31515"
+          face="Courier New" size="2">"bFull&nbsp;Screen"</font></font><font color="#000000"
+        face="Courier New" size="2">)==0;
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Setup&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;form
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Text=<font
+          color="#A31515" face="Courier New" size="2">"Apply"</font></font><font
+        color="#000000" face="Courier New" size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Text=<font color="#A31515"
+          face="Courier New" size="2">"Windowed"</font></font><font color="#000000"
+        face="Courier New" size="2">;
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Width=100;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Width=100;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbWidth.Location=<font color="#0000FF"
+          face="Courier New" size="2">new</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;Point(10,&nbsp;10);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbHeight.Location=<font
+          color="#0000FF" face="Courier New" size="2">new</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;Point(115,&nbsp;10);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbWindowed.Location=<font
+          color="#0000FF" face="Courier New" size="2">new</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;Point(10,&nbsp;30);
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bApply.Location=<font color="#0000FF"
+          face="Courier New" size="2">new</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;Point(10,&nbsp;55);
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.AutoSize=<font color="#0000FF"
+          face="Courier New" size="2">true</font></font><font color="#000000" face="Courier New"
+        size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.AutoSizeMode=<font color="#2B91AF"
+          face="Courier New" size="2">AutoSizeMode</font></font><font color="#000000"
+        face="Courier New" size="2">.GrowAndShrink;
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(tbWidth);
+        <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(tbHeight);
-<br>
+        <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(cbWindowed);
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(bApply);
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Show&nbsp;the&nbsp;form
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.ShowDialog();
-<br>
-
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Always&nbsp;return&nbsp;false;&nbsp;we&nbsp;never&nbsp;want&nbsp;this&nbsp;mod&nbsp;to&nbsp;actually&nbsp;show&nbsp;as&nbsp;being&nbsp;active
-<br>
-</font></font><font face="Courier New" size="2" color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">return</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">false</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br>
-}
-<br>
-</font></font>
-
-</body></html>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.Controls.Add(bApply);
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Show&nbsp;the&nbsp;form
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.ShowDialog();
+        <br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Always&nbsp;return&nbsp;false;&nbsp;we&nbsp;never&nbsp;want&nbsp;this&nbsp;mod&nbsp;to&nbsp;actually&nbsp;show&nbsp;as&nbsp;being&nbsp;active
+        </font></font><font color="#000000" face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font
+          color="#0000FF" face="Courier New" size="2">return</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">false</font></font><font color="#000000" face="Courier New"
+        size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>
+        }
+      </font></font>
+  </body>
+</html>

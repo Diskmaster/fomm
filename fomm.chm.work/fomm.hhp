@@ -1,5 +1,12 @@
 [OPTIONS]
-Contents file=C:\Users\Diskmaster\Desktop\svngithg\fomm\fomm.chm.work\contpage.hhc
+Compatibility=1.1 or later
+Compiled file=..\flmm\data\fomm.chm
+Contents file=contpage.hhc
+Default topic=FalloutModManager.htm
+Display compile progress=No
+Language=0x409 English (United States)
+Title=Fallout Mod Manager Help
+
 
 [FILES]
 Basicscript.htm
@@ -16,3 +23,6 @@ SDPEditor.htm
 Shaderediting.htm
 Startscreen.htm
 Thepackagemanagerform.htm
+
+[INFOTYPES]
+

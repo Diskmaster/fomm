@@ -1,3 +1,93 @@
-<html><head></head><body bgcolor="#FFFFFF">
-<OBJECT type="text/site properties"><param name="FrameName" value="topicview"><param name="WindowName" value="Main"></OBJECT><font face="Arial" size="2" color="#000000"><ul><LI><OBJECT type="text/sitemap"><param name="Name" value="Fallout Mod Manager"><param name="Local" value="falloutmodmanager.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Faq"><param name="Local" value="faq.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Command line options"><param name="Local" value="commandlineoptions.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Start screen"><param name="Local" value="startscreen.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="BSA unpacker"><param name="Local" value="bsaunpacker.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Shader editor"><param name="Local" value="sdpeditor.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="PackageManager"></OBJECT><ul><LI><OBJECT type="text/sitemap"><param name="Name" value="The package manager form"><param name="Local" value="thepackagemanagerform.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="fomods"><param name="Local" value="fomods.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Script functions"><param name="Local" value="scriptfunctions.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Scripting Examples"></OBJECT><ul><LI><OBJECT type="text/sitemap"><param name="Name" value="Empty script"><param name="Local" value="emptyscript.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Basic script"><param name="Local" value="basicscript.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Shader editing"><param name="Local" value="shaderediting.htm"><param name="WindowName" value="Main"></OBJECT><LI><OBJECT type="text/sitemap"><param name="Name" value="Custom forms and INI editing"><param name="Local" value="customformsandiniediting.htm"><param name="WindowName" value="Main"></OBJECT></ul></ul><LI><OBJECT type="text/sitemap"><param name="Name" value="Save game list"><param name="Local" value="savegamelist.htm"><param name="WindowName" value="Main"></OBJECT></ul></font>
-</body></html>
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="FrameName" value="topicview">
+	<param name="WindowName" value="Main">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Fallout Mod Manager">
+		<param name="Local" value="falloutmodmanager.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Faq">
+		<param name="Local" value="faq.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Command line options">
+		<param name="Local" value="commandlineoptions.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Start screen">
+		<param name="Local" value="startscreen.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="BSA unpacker">
+		<param name="Local" value="bsaunpacker.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Shader editor">
+		<param name="Local" value="sdpeditor.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="PackageManager">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="The package manager form">
+			<param name="Local" value="thepackagemanagerform.htm">
+			<param name="WindowName" value="Main">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="fomods">
+			<param name="Local" value="fomods.htm">
+			<param name="WindowName" value="Main">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Script functions">
+			<param name="Local" value="scriptfunctions.htm">
+			<param name="WindowName" value="Main">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Scripting Examples">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Empty script">
+				<param name="Local" value="emptyscript.htm">
+				<param name="WindowName" value="Main">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Basic script">
+				<param name="Local" value="basicscript.htm">
+				<param name="WindowName" value="Main">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Shader editing">
+				<param name="Local" value="shaderediting.htm">
+				<param name="WindowName" value="Main">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Custom forms and INI editing">
+				<param name="Local" value="customformsandiniediting.htm">
+				<param name="WindowName" value="Main">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Save game list">
+		<param name="Local" value="savegamelist.htm">
+		<param name="WindowName" value="Main">
+		</OBJECT>
+</UL>
+</BODY></HTML>

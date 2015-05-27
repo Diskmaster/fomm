@@ -1,110 +1,144 @@
-<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>Fallout Mod Manager</title></head>
-<body bgcolor="#FFFFFF">
-<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
-<font face="Arial" size="3" color="#000000"><b>Fallout Mod Manager
-<br>
-</b></font>
-
-</td><td align="right"><font face="Arial" size="2"><a href="falloutmodmanager.htm">[Main]</a> <a href="faq.htm">[Next]</a></font></td></tr></table><br>
-
-<font face="Arial" size="2" color="#000000">Name: Fallout Mod Manager
-<br>
-Version: 0.10
-<br>
-Category: Utilities
-<br>
-Author: Timeslip
-<br>
-Source: http://sourceforge.net/project/showfiles.php?group_id=247976
-<br>
-Forum: http://sourceforge.net/forum/?group_id=247976
-<br>
-Homepage: http://sourceforge.net/projects/fomm/
-<br>
-
-<br>
-<b>Description</b>
-<br>
-===========
-<br>
-A collection of utilities for mod users and creators. Included are tools for one click mod installation and removal, load order manipulation, esp editing, bsa creation and extraction, sdp editing and more.
-<br>
-
-<br>
-<b>Install</b>
-<br>
-=======
-<br>
-First extract the .7z archive to a location of your choice. Make sure you keep the directory structure intact.
-<br>
-
-<br>
-If you only have a single, retail DVD install of fallout 3 you can run fomm from anywhere; the only restriction is that it needs to be somewhere that it has write access to. If you have multiple installations, or you are running a downloaded version of fallout from D2D or steam, you will need to either install fomm into the same directory as the fallout3.exe of the game you want to run it with, or manually edit the settings.xml file to add the node '&lt;strValue name="FalloutDir"&gt;add the full path to your fallout directory here&lt;/strValue&gt;'.
-<br>
-
-<br>
-If fomm crashes on startup with a generic windows error then you likely have a problem with your .NET installation; fomm requires .NET 2.0 to run. Among the other third party gunk that the fallout 3 installer installs alongside the actual game is the original prepatched version of .NET 3.0, which under some circumstances can cause .NET 2 applications to break. In this case visiting windows update and installing the .NET 3 patch it offers you is sufficient to get fomm working.
-<br>
-
-<br>
-<b>Update</b>
-<br>
-=======
-<br>
-There are downloads available with the name fommUpdateXXX.7z. These can be used to update an existing, earlier version of fomm to the newest one, as long as the existing version is the same major release as the update. (e.g. 'fommUpdate0.10.6.7z' can be used to update an existing 0.10.1 installation, but not a 0.9.5 one.) To use, just extract the contents of the archive on top of the existing fomm install.
-<br>
-
-<br>
-You can still use the full installer to update if you prefer, the only difference will be the extra download time it requires.
-<br>
-
-<br>
-<b>Uninstall</b>
-<br>
-=========
-<br>
-No special uninstallation is required; just delete fomm. (Or run the uninstaller, if you used the automatic installer to install fomm in the first place.) Before you do so you'll probably want to undo any changes that have been made with it, such as deactivating fomods or removing archive invalidation. All fomods you have installed will be saved in a 'mods' directory in the same folder as fomm.exe, which you may or may not want to delete along with fomm.
-<br>
-
-<br>
-<b>Contact</b>
-<br>
-=======
-<br>
-You can find me on the official Elder Scrolls forums or sourceforge as 'Timeslip'.
-<br>
-
-<br>
-<b>Credits</b>
-<br>
-=======
-<br>
-Thanks to Bethesda for creating Fallout 3.
-<br>
-Thanks to Quarn for ArchiveInvalidation Invalidated, which fomm uses as its archive invalidation method.
-<br>
-Thanks to Claviticus for the code that the auto load order sorting functionality is based on.
-<br>
-Thanks to AliTheLord for an updated load order template
-<br>
-Thanks to the long list of people who helped out with obmm development, which fomm is partially based on.
-<br>
-  Especially: LHammonds, LizTail, Wyre, Scanti, Dev_akm, Falados and Niaht 
-<br>
-
-<br>
-fomm makes use of the SharpZibLib library and TextEditor from ICSharpCode, and the hex edit control from Be.HexEditor.
-<br>
-
-<br>
-<b>Licensing/Legal</b>
-<br>
-===============
-<br>
-This mod is released under the GNU General Public License.
-<br>
-The GPL can be found here: http://www.gnu.org/licenses/gpl.txt
-<br>
-</font>
-
-</body></html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <meta name="generator" content="Help &amp; Manual 2.7.0">
+    <title>Fallout Mod Manager</title>
+  </head>
+  <body bgcolor="#FFFFFF">
+    <table bgcolor="#C0C0C0" border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="left">
+            <font color="#000000" face="Arial" size="3"><b>Fallout Mod Manager
+              </b></font>
+          </td>
+          <td align="right"><font face="Arial" size="2"><a href="falloutmodmanager.htm">[Main]</a>
+              <a href="faq.htm">[Next]</a></font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font color="#000000" face="Arial" size="2">Name: Fallout Mod Manager
+      <br>
+      Version: 0.14.11
+      <br>
+      Category: Utilities
+      <br>
+      Author: Timeslip, Kaburke, et al. (See svn / git commits for names)
+      <br>
+      Original Source:
+      http://sourceforge.net/p/fomm/code/685/tree/branches/qfomm/
+      <br>
+      NiveusEverto's Fork Source: http://github.com/niveuseverto/fomm/
+      <br>
+      Homepage: http://www.nexusmods.com/newvegas/mods/54991/
+      <br>
+      <br>
+      <b>Description</b>
+      <br>
+      ===========
+      <br>
+      A collection of utilities for mod users and creators. Included are tools
+      for one click mod installation and removal, load order manipulation, esp
+      editing, bsa creation and extraction, sdp editing and more.
+      <br>
+      <br>
+      <b>Install</b>
+      <br>
+      =======
+      <br>
+      First extract the .7z archive to a location of your choice. Make sure you
+      keep the directory structure intact.
+      <br>
+      <br>
+      If you only have a single, retail DVD install of fallout 3 you can run
+      fomm from anywhere; the only restriction is that it needs to be somewhere
+      that it has write access to. If you have multiple installations, or you
+      are running a downloaded version of fallout from D2D or steam, you will
+      need to either install fomm into the same directory as the fallout3.exe of
+      the game you want to run it with, or manually edit the settings.xml file
+      to add the node '&lt;strValue name="FalloutDir"&gt;add the full path to
+      your fallout directory here&lt;/strValue&gt;'.
+      <br>
+      <br>
+      If fomm crashes on startup with a generic windows error then you likely
+      have a problem with your .NET installation; fomm requires .NET 4.0 to run.
+      Among the other third party gunk that the fallout 3 installer installs
+      alongside the actual game is the original prepatched version of .NET 3.0,
+      which under some circumstances can cause .NET 2 applications to break. In
+      this case visiting windows update and pulling in at least .NET 4.0 and
+      required updates in addition should get you up and running.
+      <br>
+      <br>
+      <b>Update</b>
+      <br>
+      =======
+      <br>
+      There are downloads available with the name fommUpdateXXX.7z. These can be
+      used to update an existing, earlier version of fomm to the newest one, as
+      long as the existing version is the same major release as the update.
+      (e.g. 'fommUpdate0.10.6.7z' can be used to update an existing 0.10.1
+      installation, but not a 0.9.5 one.) To use, just extract the contents of
+      the archive on top of the existing fomm install.
+      <br>
+      <br>
+      You can still use the full installer to update if you prefer, the only
+      difference will be the extra download time it requires.
+      <br>
+      <br>
+      <b>Uninstall</b>
+      <br>
+      =========
+      <br>
+      No special uninstallation is required; just delete fomm. (Or run the
+      uninstaller, if you used the automatic installer to install fomm in the
+      first place.) Before you do so you'll probably want to undo any changes
+      that have been made with it, such as deactivating fomods or removing
+      archive invalidation. All fomods you have installed will be saved in a
+      'mods' directory in the same folder as fomm.exe, which you may or may not
+      want to delete along with fomm.
+      <br>
+      <br>
+      <b>Contact</b>
+      <br>
+      =======
+      <br>
+      You can find me on the official Elder Scrolls forums or sourceforge as
+      'Timeslip'.
+      <br>
+      <br>
+      <b>Credits</b>
+      <br>
+      =======
+      <br>
+      Thanks to Bethesda for creating Fallout 3.
+      <br>
+      Thanks to Quarn for ArchiveInvalidation Invalidated, which fomm uses as
+      its archive invalidation method.
+      <br>
+      Thanks to Claviticus for the code that the auto load order sorting
+      functionality is based on.
+      <br>
+      Thanks to AliTheLord for an updated load order template
+      <br>
+      Thanks to the long list of people who helped out with obmm development,
+      which fomm is partially based on.
+      <br>
+      Thanks to Diskmaster for updating this ancient help documentation to some
+      more modern standards.<br>
+      Especially: LHammonds, LizTail, Wyre, Scanti, Dev_akm, Falados and Niaht <br>
+      <br>
+      fomm makes use of the SharpZibLib library and TextEditor from ICSharpCode,
+      and the hex edit control from Be.HexEditor.
+      <br>
+      <br>
+      <b>Licensing/Legal</b>
+      <br>
+      ===============
+      <br>
+      This mod is released under the GNU General Public License.
+      <br>
+      The GPL can be found here: http://www.gnu.org/licenses/gpl.txt
+    </font>
+  </body>
+</html>

@@ -1,260 +1,526 @@
-<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>Script functions</title></head>
-<body bgcolor="#FFFFFF">
-<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
-<font face="Arial" size="3" color="#000000"><b>Script functions
-<br>
-</b></font>
-
-</td><td align="right"><font face="Arial" size="2"><a href="fomods.htm">[Previous]</a> <a href="falloutmodmanager.htm">[Main]</a> <a href="emptyscript.htm">[Next]</a></font></td></tr></table><br>
-
-<font face="Arial" size="2" color="#000000"><font face="Arial" size="2" color="#0000FF">void</font><font face="Arial" size="2" color="#000000"> PerformBasicInstall()
-<br>
-
-<br>
-Calling this function will extract all files from the package except for those in the fomod directory, and then activate all esps and esms. This is exactly equivelent to what fomm would do if no script was present at all.<font face="Arial" size="2" color="#0000FF">
-<br>
-
-<br>
-void</font></font><font face="Arial" size="2" color="#000000"> MessageBox(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> message)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> MessageBox(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> message, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> title)
-<br>
-<font face="Arial" size="2" color="#2B91AF">DialogResult</font></font><font face="Arial" size="2" color="#000000"> MessageBox(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> message, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> title, <font face="Arial" size="2" color="#2B91AF">MessageBoxButtons</font></font><font face="Arial" size="2" color="#000000"> buttons)
-<br>
-
-<br>
-Display a message box to the user.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000">[] Select(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] items, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] previews, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] descs, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> title, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> many)
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000">[] Select(<font face="Arial" size="2" color="#2B91AF">SelectOption</font></font><font face="Arial" size="2" color="#000000">[] options, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> title, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> many)
-<br>
-
-<br>
-Display a dialog that lets the user pick one or more options out of a selection. You can provide each selection with an attached screenshot and/or description. In the first version of this function, 'previews' is an array of paths to image files inside the fomod. Both the previews and descs arrays are allowed to be null, or to contain null entries. If the array isn't null, it must be the same length as the items array. In the second version, you pass an array of SelectOption structs, which is a custom struct given below.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">struct</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#2B91AF">SelectOption</font></font><font face="Arial" size="2" color="#000000"> {
-<br>
-    <font face="Arial" size="2" color="#0000FF">public</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> Item, Preview, Desc;
-<br>
-
-<br>
-    <font face="Arial" size="2" color="#0000FF">public</font></font><font face="Arial" size="2" color="#000000"> SelectOption(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> item, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> preview, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> desc);
-<br>
-}
-<br>
-
-<br>
-The return value is an array of indicies of the selected items, or null if an error occured.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#2B91AF">Version</font></font><font face="Arial" size="2" color="#000000"> GetFommVersion()
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> ScriptExtenderPresent()
-<br>
-<font face="Arial" size="2" color="#2B91AF">Version</font></font><font face="Arial" size="2" color="#000000"> GetFoseVersion()
-<br>
-<font face="Arial" size="2" color="#2B91AF">Version</font></font><font face="Arial" size="2" color="#000000"> GetFalloutVersion()
-<br>
-
-<br>
-Used to get the version of relevent programs and utilities.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] GetFomodFileList()
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> InstallFileFromFomod(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> file)
-<br>
-<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] GetFileFromFomod(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> file)
-<br>
-
-<br>
-Used to list and manipulate files in the fomod. Note that GetFomodFileList wont list any files in the fomod directory, although you can still use the other functions to retrieve them.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] GetExistingDataFileList(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> path, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> pattern, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> allFolders)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> DataFileExists(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> path)
-<br>
-<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] GetExistingDataFile(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> path)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> GenerateDataFile(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> path, <font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] data)
-<br>
-
-<br>
-Used to manipulate files in fallouts data directory.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] GetBSAFileList(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> bsa)
-<br>
-<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] GetDataFileFromBSA(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> bsa, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> file)
-<br>
-
-<br>
-Used to list and extract files from BSAs. BSAs must exist in the fallout data folder.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] GetAllPlugins()
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] GetActivePlugins()
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> SetPluginActivation(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> s, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> activate)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> SetLoadOrder(<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000">[] plugins)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> SetLoadOrder(<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000">[] plugins, <font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> position)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> IsLoadOrderAutoSorted()
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> GetAutoInsertionPoint(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> plugin)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> AutoSortPlugins(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000">[] plugins)
-<br>
-
-<br>
-Used to manipulate currently installed plugins. GetActivePlugins returns a load order sorted list of the currently active esps, and GetAllPlugins gets a list of all esms and esps in the data directory whether or not they are active. SetPluginActivation is used to set esp's as active or inactive. (Note that newely installed esps are initially inactive) The first load order function can be used to set the order of the entire plugin list at once, and the second performs the same as a drag drop on the load order menu. (i.e. specify a list of plugins you want moved, and the position in the list to insert them into.) IsLoadOrderSorted returns true if the current load order matches up with what the auto sort button on the plugin screen would set, or false otherwise. GetAutoInsertionPoint returns the position in the current load order that the auto sort would like to place a plugin with the specified name. AutoSortPlugins feeds a set of plugin names into the auto sorter, and sorts the array according to the result.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetFalloutIniString(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> GetFalloutIniInt(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> EditFalloutINI(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> key, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> saveOld)
-<br>
-
-<br>
-Used to get/set values in fallout.ini. Don't include the square brackets around the section name. If saveOld is false, deactivating the fomod wont restore the original ini entry.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetPrefsIniString(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> GetPrefsIniInt(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> EditPrefsINI(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> key, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> saveOld)
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetGeckIniString(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> GetGeckIniInt(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> EditGeckINI(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> key, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> saveOld)
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetGeckPrefsIniString(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> GetGeckPrefsIniInt(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> EditGeckPrefsINI(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> section, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> key, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> saveOld)
-<br>
-
-<br>
-As above, but used to get/set values in falloutprefs.ini
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetRendererInfo(<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> value)
-<br>
-
-<br>
-Used to get values from RendererInfo.txt.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> EditShader(<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> package, <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> name, <font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] data)
-<br>
-
-<br>
-Used to replace a single shader in an sdp package. The shader name is case sensitive. The data must be an assembled pso or vso object. (i.e. the contents of one of the files you get by clicking 'export binary' in the shader editor.)
-<br>
-
-<br>
-<font face="Arial" size="2" color="#2B91AF">Form</font></font><font face="Arial" size="2" color="#000000"> CreateCustomForm()
-<br>
-
-<br>
-Creates a new form, which you can add controls to normally to construct a custom dialog. Use this rather than 'new Form()' to avoid the unknown zone security warning.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> GetLastError()
-<br>
-
-<br>
-When an error occurs that doesn't raise an exception but sill causes the scripting function to fail, you can usually call GetLastError to get a string that gives a reason why the function call failed.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> SetupScriptCompiler(<font face="Arial" size="2" color="#2B91AF">Plugin</font></font><font face="Arial" size="2" color="#000000">[] plugins)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> CompileResultScript(<font face="Arial" size="2" color="#2B91AF">SubRecord</font></font><font face="Arial" size="2" color="#000000"> sr, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#2B91AF">Record</font></font><font face="Arial" size="2" color="#000000"> r2, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> msg)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> CompileScript(<font face="Arial" size="2" color="#2B91AF">Record</font></font><font face="Arial" size="2" color="#000000"> r2, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">string</font></font><font face="Arial" size="2" color="#000000"> msg)
-<br>
-
-<br>
-These functions are used to access fomm's script compiler; use them if you perform any tasks using the tessnip interface that requires scripts to be recompiled. SetupScriptCompiler must be called again for each new plugin you wish to compile scripts for. The 'plugins' array should contain a list of masters followed by the plugin in the order specified in the plugin header to ensure the compiler gets formIDs correct.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> IsAIActive()
-<br>
-
-<br>
-Simply returns true if ArchiveInvalidation Invalidated is installed or archiveinvalidation has been toggled on in fomm, or returns false otherwise. It will not return true if archiveinvalidation.txt is present, as that is not a reliable solution to the invalidation problem.
-<br>
-
-<br>
-<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> LoadTexture(<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] bytes)
-<br>
-<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> CreateTexture(<font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> width, <font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> height)
-<br>
-<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] SaveTexture(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> tex, <font face="Arial" size="2" color="#2B91AF">TextureFormat</font></font><font face="Arial" size="2" color="#000000"> format, <font face="Arial" size="2" color="#0000FF">bool</font></font><font face="Arial" size="2" color="#000000"> mipmaps)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> CopyTexture(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> source, System.Drawing.<font face="Arial" size="2" color="#2B91AF">Rectangle</font></font><font face="Arial" size="2" color="#000000"> sourceRect, <font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> dest, System.Drawing.<font face="Arial" size="2" color="#2B91AF">Rectangle</font></font><font face="Arial" size="2" color="#000000"> destRect)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> GetTextureSize(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> tex, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> width, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> height)
-<br>
-<font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] GetTextureData(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> tex, <font face="Arial" size="2" color="#0000FF">out</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">int</font></font><font face="Arial" size="2" color="#000000"> pitch)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> SetTextureData(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> tex, <font face="Arial" size="2" color="#0000FF">byte</font></font><font face="Arial" size="2" color="#000000">[] data)
-<br>
-<font face="Arial" size="2" color="#0000FF">void</font></font><font face="Arial" size="2" color="#000000"> ReleaseTexture(<font face="Arial" size="2" color="#2B91AF">IntPtr</font></font><font face="Arial" size="2" color="#000000"> tex)
-<br>
-
-<br>
-<font face="Arial" size="2" color="#0000FF">public</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#0000FF">enum</font></font><font face="Arial" size="2" color="#000000"> <font face="Arial" size="2" color="#2B91AF">TextureFormat</font></font><font face="Arial" size="2" color="#000000"> {
-<br>
-    R8G8B8=20,
-<br>
-    A8R8G8B8=21,
-<br>
-    X8R8G8B8=22,
-<br>
-    DXT1=(<font face="Arial" size="2" color="#A31515">'D'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;0) | (<font face="Arial" size="2" color="#A31515">'X'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;8) | (<font face="Arial" size="2" color="#A31515">'T'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;16) | (<font face="Arial" size="2" color="#A31515">'1'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;24),
-<br>
-    DXT3=(<font face="Arial" size="2" color="#A31515">'D'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;0) | (<font face="Arial" size="2" color="#A31515">'X'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;8) | (<font face="Arial" size="2" color="#A31515">'T'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;16) | (<font face="Arial" size="2" color="#A31515">'3'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;24),
-<br>
-    DXT5=(<font face="Arial" size="2" color="#A31515">'D'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;0) | (<font face="Arial" size="2" color="#A31515">'X'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;8) | (<font face="Arial" size="2" color="#A31515">'T'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;16) | (<font face="Arial" size="2" color="#A31515">'5'</font></font><font face="Arial" size="2" color="#000000">&lt;&lt;24),
-<br>
-}
-<br>
-
-<br>
-These functions are used to manipulate textures. A texture must first be loaded or a blank texture created using LoadTexture or CreateTexture. You can then manually manipulate the data, which will always be A8R8G8B8 format regardless of the source, or copy between different textures. ReleaseTexture only needs to be used if you're generating a sufficient number of textures to fill memory; all textures will be released when the script finishes executing anyway. All saved textures are in dds format, although other types of textures can be loaded. Textures will always be loaded without mipmaps, but you have the option of automatically generating a new set when you save.
-<br>
-</font></font>
-
-</body></html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <meta name="generator" content="Help &amp; Manual 2.7.0">
+    <title>Script functions</title>
+  </head>
+  <body bgcolor="#FFFFFF">
+    <table bgcolor="#C0C0C0" border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="left">
+            <font color="#000000" face="Arial" size="3"><b>Script functions
+              </b></font>
+          </td>
+          <td align="right"><font face="Arial" size="2"><a href="fomods.htm">[Previous]</a>
+              <a href="falloutmodmanager.htm">[Main]</a> <a href="emptyscript.htm">[Next]</a></font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font color="#000000" face="Arial" size="2"><font color="#0000FF" face="Arial"
+        size="2">void</font><font color="#000000" face="Arial" size="2">
+        PerformBasicInstall()
+        <br>
+        <br>
+        Calling this function will extract all files from the package except for
+        those in the fomod directory, and then activate all esps and esms. This
+        is exactly equivelent to what fomm would do if no script was present at
+        all.<font color="#0000FF" face="Arial" size="2">
+          <br>
+          <br>
+          void</font></font><font color="#000000" face="Arial" size="2">
+        MessageBox(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> message)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> MessageBox(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> message, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        title)
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">DialogResult</font></font><font
+        color="#000000" face="Arial" size="2"> MessageBox(<font color="#0000FF"
+          face="Arial" size="2">string</font></font><font color="#000000" face="Arial"
+        size="2"> message, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> title, <font color="#2B91AF" face="Arial"
+          size="2">MessageBoxButtons</font></font><font color="#000000" face="Arial"
+        size="2"> buttons)
+        <br>
+        <br>
+        Display a message box to the user.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2">[] Select(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2">[] items, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">[]
+        previews, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2">[] descs, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        title, <font color="#0000FF" face="Arial" size="2">bool</font></font><font
+        color="#000000" face="Arial" size="2"> many)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2">[] Select(<font color="#2B91AF" face="Arial" size="2">SelectOption</font></font><font
+        color="#000000" face="Arial" size="2">[] options, <font color="#0000FF"
+          face="Arial" size="2">string</font></font><font color="#000000" face="Arial"
+        size="2"> title, <font color="#0000FF" face="Arial" size="2">bool</font></font><font
+        color="#000000" face="Arial" size="2"> many)
+        <br>
+        <br>
+        Display a dialog that lets the user pick one or more options out of a
+        selection. You can provide each selection with an attached screenshot
+        and/or description. In the first version of this function, 'previews' is
+        an array of paths to image files inside the fomod. Both the previews and
+        descs arrays are allowed to be null, or to contain null entries. If the
+        array isn't null, it must be the same length as the items array. In the
+        second version, you pass an array of SelectOption structs, which is a
+        custom struct given below.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">struct</font></font><font color="#000000"
+        face="Arial" size="2"> <font color="#2B91AF" face="Arial" size="2">SelectOption</font></font><font
+        color="#000000" face="Arial" size="2"> {
+        <br>
+        <font color="#0000FF" face="Arial" size="2">public</font></font><font color="#000000"
+        face="Arial" size="2"> <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> Item, Preview, Desc;
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">public</font></font><font color="#000000"
+        face="Arial" size="2"> SelectOption(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> item, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        preview, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> desc);
+        <br>
+        }
+        <br>
+        <br>
+        The return value is an array of indicies of the selected items, or null
+        if an error occured.
+        <br>
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">Version</font></font><font color="#000000"
+        face="Arial" size="2"> GetFommVersion()
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> ScriptExtenderPresent()
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">Version</font></font><font color="#000000"
+        face="Arial" size="2"> GetFoseVersion()
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">Version</font></font><font color="#000000"
+        face="Arial" size="2"> GetFalloutVersion()
+        <br>
+        <br>
+        Used to get the version of relevent programs and utilities.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2">[] GetFomodFileList()
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> InstallFileFromFomod(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        file)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">byte</font></font><font color="#000000"
+        face="Arial" size="2">[] GetFileFromFomod(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        file)
+        <br>
+        <br>
+        Used to list and manipulate files in the fomod. Note that
+        GetFomodFileList wont list any files in the fomod directory, although
+        you can still use the other functions to retrieve them.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2">[] GetExistingDataFileList(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        path, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> pattern, <font color="#0000FF" face="Arial"
+          size="2">bool</font></font><font color="#000000" face="Arial" size="2">
+        allFolders)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> DataFileExists(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        path)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">byte</font></font><font color="#000000"
+        face="Arial" size="2">[] GetExistingDataFile(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        path)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> GenerateDataFile(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        path, <font color="#0000FF" face="Arial" size="2">byte</font></font><font
+        color="#000000" face="Arial" size="2">[] data)
+        <br>
+        <br>
+        Used to manipulate files in fallouts data directory.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2">[] GetBSAFileList(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        bsa)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">byte</font></font><font color="#000000"
+        face="Arial" size="2">[] GetDataFileFromBSA(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        bsa, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> file)
+        <br>
+        <br>
+        Used to list and extract files from BSAs. BSAs must exist in the fallout
+        data folder.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2">[] GetAllPlugins()
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2">[] GetActivePlugins()
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> SetPluginActivation(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        s, <font color="#0000FF" face="Arial" size="2">bool</font></font><font
+        color="#000000" face="Arial" size="2"> activate)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> SetLoadOrder(<font color="#0000FF" face="Arial" size="2">int</font></font><font
+        color="#000000" face="Arial" size="2">[] plugins)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> SetLoadOrder(<font color="#0000FF" face="Arial" size="2">int</font></font><font
+        color="#000000" face="Arial" size="2">[] plugins, <font color="#0000FF"
+          face="Arial" size="2">int</font></font><font color="#000000" face="Arial"
+        size="2"> position)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> IsLoadOrderAutoSorted()
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2"> GetAutoInsertionPoint(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        plugin)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> AutoSortPlugins(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">[]
+        plugins)
+        <br>
+        <br>
+        Used to manipulate currently installed plugins. GetActivePlugins returns
+        a load order sorted list of the currently active esps, and GetAllPlugins
+        gets a list of all esms and esps in the data directory whether or not
+        they are active. SetPluginActivation is used to set esp's as active or
+        inactive. (Note that newely installed esps are initially inactive) The
+        first load order function can be used to set the order of the entire
+        plugin list at once, and the second performs the same as a drag drop on
+        the load order menu. (i.e. specify a list of plugins you want moved, and
+        the position in the list to insert them into.) IsLoadOrderSorted returns
+        true if the current load order matches up with what the auto sort button
+        on the plugin screen would set, or false otherwise.
+        GetAutoInsertionPoint returns the position in the current load order
+        that the auto sort would like to place a plugin with the specified name.
+        AutoSortPlugins feeds a set of plugin names into the auto sorter, and
+        sorts the array according to the result.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetFalloutIniString(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2"> GetFalloutIniInt(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> EditFalloutINI(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> key, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        value, <font color="#0000FF" face="Arial" size="2">bool</font></font><font
+        color="#000000" face="Arial" size="2"> saveOld)
+        <br>
+        <br>
+        Used to get/set values in fallout.ini. Don't include the square brackets
+        around the section name. If saveOld is false, deactivating the fomod
+        wont restore the original ini entry.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetPrefsIniString(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2"> GetPrefsIniInt(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> EditPrefsINI(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> section, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        key, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value, <font color="#0000FF" face="Arial"
+          size="2">bool</font></font><font color="#000000" face="Arial" size="2">
+        saveOld)
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetGeckIniString(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2"> GetGeckIniInt(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> EditGeckINI(<font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> section, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        key, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value, <font color="#0000FF" face="Arial"
+          size="2">bool</font></font><font color="#000000" face="Arial" size="2">
+        saveOld)
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetGeckPrefsIniString(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">int</font></font><font color="#000000"
+        face="Arial" size="2"> GetGeckPrefsIniInt(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> value)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> EditGeckPrefsINI(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        section, <font color="#0000FF" face="Arial" size="2">string</font></font><font
+        color="#000000" face="Arial" size="2"> key, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        value, <font color="#0000FF" face="Arial" size="2">bool</font></font><font
+        color="#000000" face="Arial" size="2"> saveOld)
+        <br>
+        <br>
+        As above, but used to get/set values in falloutprefs.ini
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetRendererInfo(<font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        value)
+        <br>
+        <br>
+        Used to get values from RendererInfo.txt.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> EditShader(<font color="#0000FF" face="Arial" size="2">int</font></font><font
+        color="#000000" face="Arial" size="2"> package, <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        name, <font color="#0000FF" face="Arial" size="2">byte</font></font><font
+        color="#000000" face="Arial" size="2">[] data)
+        <br>
+        <br>
+        Used to replace a single shader in an sdp package. The shader name is
+        case sensitive. The data must be an assembled pso or vso object. (i.e.
+        the contents of one of the files you get by clicking 'export binary' in
+        the shader editor.)
+        <br>
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">Form</font></font><font color="#000000"
+        face="Arial" size="2"> CreateCustomForm()
+        <br>
+        <br>
+        Creates a new form, which you can add controls to normally to construct
+        a custom dialog. Use this rather than 'new Form()' to avoid the unknown
+        zone security warning.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">string</font></font><font color="#000000"
+        face="Arial" size="2"> GetLastError()
+        <br>
+        <br>
+        When an error occurs that doesn't raise an exception but sill causes the
+        scripting function to fail, you can usually call GetLastError to get a
+        string that gives a reason why the function call failed.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> SetupScriptCompiler(<font color="#2B91AF" face="Arial"
+          size="2">Plugin</font></font><font color="#000000" face="Arial" size="2">[]
+        plugins)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> CompileResultScript(<font color="#2B91AF" face="Arial"
+          size="2">SubRecord</font></font><font color="#000000" face="Arial" size="2">
+        sr, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#2B91AF" face="Arial"
+          size="2">Record</font></font><font color="#000000" face="Arial" size="2">
+        r2, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        msg)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> CompileScript(<font color="#2B91AF" face="Arial"
+          size="2">Record</font></font><font color="#000000" face="Arial" size="2">
+        r2, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#0000FF" face="Arial"
+          size="2">string</font></font><font color="#000000" face="Arial" size="2">
+        msg)
+        <br>
+        <br>
+        These functions are used to access fomm's script compiler; use them if
+        you perform any tasks using the tessnip interface that requires scripts
+        to be recompiled. SetupScriptCompiler must be called again for each new
+        plugin you wish to compile scripts for. The 'plugins' array should
+        contain a list of masters followed by the plugin in the order specified
+        in the plugin header to ensure the compiler gets formIDs correct.
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">bool</font></font><font color="#000000"
+        face="Arial" size="2"> IsAIActive()
+        <br>
+        <br>
+        Simply returns true if ArchiveInvalidation Invalidated is installed or
+        archiveinvalidation has been toggled on in fomm, or returns false
+        otherwise. It will not return true if archiveinvalidation.txt is
+        present, as that is not a reliable solution to the invalidation problem.
+        <br>
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">IntPtr</font></font><font color="#000000"
+        face="Arial" size="2"> LoadTexture(<font color="#0000FF" face="Arial" size="2">byte</font></font><font
+        color="#000000" face="Arial" size="2">[] bytes)
+        <br>
+        <font color="#2B91AF" face="Arial" size="2">IntPtr</font></font><font color="#000000"
+        face="Arial" size="2"> CreateTexture(<font color="#0000FF" face="Arial"
+          size="2">int</font></font><font color="#000000" face="Arial" size="2">
+        width, <font color="#0000FF" face="Arial" size="2">int</font></font><font
+        color="#000000" face="Arial" size="2"> height)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">byte</font></font><font color="#000000"
+        face="Arial" size="2">[] SaveTexture(<font color="#2B91AF" face="Arial"
+          size="2">IntPtr</font></font><font color="#000000" face="Arial" size="2">
+        tex, <font color="#2B91AF" face="Arial" size="2">TextureFormat</font></font><font
+        color="#000000" face="Arial" size="2"> format, <font color="#0000FF" face="Arial"
+          size="2">bool</font></font><font color="#000000" face="Arial" size="2">
+        mipmaps)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> CopyTexture(<font color="#2B91AF" face="Arial" size="2">IntPtr</font></font><font
+        color="#000000" face="Arial" size="2"> source, System.Drawing.<font color="#2B91AF"
+          face="Arial" size="2">Rectangle</font></font><font color="#000000" face="Arial"
+        size="2"> sourceRect, <font color="#2B91AF" face="Arial" size="2">IntPtr</font></font><font
+        color="#000000" face="Arial" size="2"> dest, System.Drawing.<font color="#2B91AF"
+          face="Arial" size="2">Rectangle</font></font><font color="#000000" face="Arial"
+        size="2"> destRect)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> GetTextureSize(<font color="#2B91AF" face="Arial"
+          size="2">IntPtr</font></font><font color="#000000" face="Arial" size="2">
+        tex, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#0000FF" face="Arial"
+          size="2">int</font></font><font color="#000000" face="Arial" size="2">
+        width, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#0000FF" face="Arial"
+          size="2">int</font></font><font color="#000000" face="Arial" size="2">
+        height)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">byte</font></font><font color="#000000"
+        face="Arial" size="2">[] GetTextureData(<font color="#2B91AF" face="Arial"
+          size="2">IntPtr</font></font><font color="#000000" face="Arial" size="2">
+        tex, <font color="#0000FF" face="Arial" size="2">out</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#0000FF" face="Arial"
+          size="2">int</font></font><font color="#000000" face="Arial" size="2">
+        pitch)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> SetTextureData(<font color="#2B91AF" face="Arial"
+          size="2">IntPtr</font></font><font color="#000000" face="Arial" size="2">
+        tex, <font color="#0000FF" face="Arial" size="2">byte</font></font><font
+        color="#000000" face="Arial" size="2">[] data)
+        <br>
+        <font color="#0000FF" face="Arial" size="2">void</font></font><font color="#000000"
+        face="Arial" size="2"> ReleaseTexture(<font color="#2B91AF" face="Arial"
+          size="2">IntPtr</font></font><font color="#000000" face="Arial" size="2">
+        tex)
+        <br>
+        <br>
+        <font color="#0000FF" face="Arial" size="2">public</font></font><font color="#000000"
+        face="Arial" size="2"> <font color="#0000FF" face="Arial" size="2">enum</font></font><font
+        color="#000000" face="Arial" size="2"> <font color="#2B91AF" face="Arial"
+          size="2">TextureFormat</font></font><font color="#000000" face="Arial"
+        size="2"> {
+        <br>
+        R8G8B8=20,
+        <br>
+        A8R8G8B8=21,
+        <br>
+        X8R8G8B8=22,
+        <br>
+        DXT1=(<font color="#A31515" face="Arial" size="2">'D'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;0) | (<font color="#A31515"
+          face="Arial" size="2">'X'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;8) | (<font color="#A31515" face="Arial" size="2">'T'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;16) | (<font color="#A31515"
+          face="Arial" size="2">'1'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;24),
+        <br>
+        DXT3=(<font color="#A31515" face="Arial" size="2">'D'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;0) | (<font color="#A31515"
+          face="Arial" size="2">'X'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;8) | (<font color="#A31515" face="Arial" size="2">'T'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;16) | (<font color="#A31515"
+          face="Arial" size="2">'3'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;24),
+        <br>
+        DXT5=(<font color="#A31515" face="Arial" size="2">'D'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;0) | (<font color="#A31515"
+          face="Arial" size="2">'X'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;8) | (<font color="#A31515" face="Arial" size="2">'T'</font></font><font
+        color="#000000" face="Arial" size="2">&lt;&lt;16) | (<font color="#A31515"
+          face="Arial" size="2">'5'</font></font><font color="#000000" face="Arial"
+        size="2">&lt;&lt;24),
+        <br>
+        }
+        <br>
+        <br>
+        These functions are used to manipulate textures. A texture must first be
+        loaded or a blank texture created using LoadTexture or CreateTexture.
+        You can then manually manipulate the data, which will always be A8R8G8B8
+        format regardless of the source, or copy between different textures.
+        ReleaseTexture only needs to be used if you're generating a sufficient
+        number of textures to fill memory; all textures will be released when
+        the script finishes executing anyway. All saved textures are in dds
+        format, although other types of textures can be loaded. Textures will
+        always be loaded without mipmaps, but you have the option of
+        automatically generating a new set when you save.
+      </font></font>
+  </body>
+</html>

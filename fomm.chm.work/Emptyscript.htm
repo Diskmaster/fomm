@@ -1,38 +1,62 @@
-<html><head><meta name="generator" content="Help & Manual 2.7.0"><title>Empty script</title></head>
-<body bgcolor="#FFFFFF">
-<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#C0C0C0"><tr><td align="left">
-<font face="Arial" size="3" color="#000000"><b>Empty script
-<br>
-</b></font>
-
-</td><td align="right"><font face="Arial" size="2"><a href="scriptfunctions.htm">[Previous]</a> <a href="falloutmodmanager.htm">[Main]</a> <a href="basicscript.htm">[Next]</a></font></td></tr></table><br>
-
-<font face="Courier New" size="2" color="#000000"><font face="Courier New" size="2" color="#008000">//A&nbsp;script&nbsp;that&nbsp;does&nbsp;nothing.&nbsp;It&nbsp;is&nbsp;the&nbsp;basic&nbsp;outline&nbsp;that&nbsp;any&nbsp;basic&nbsp;script&nbsp;should&nbsp;follow
-<br>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <meta name="generator" content="Help &amp; Manual 2.7.0">
+    <title>Empty script</title>
+  </head>
+  <body bgcolor="#FFFFFF">
+    <table bgcolor="#C0C0C0" border="0" cellpadding="3" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="left">
+            <font color="#000000" face="Arial" size="3"><b>Empty script
+              </b></font>
+          </td>
+          <td align="right"><font face="Arial" size="2"><a href="scriptfunctions.htm">[Previous]</a>
+              <a href="falloutmodmanager.htm">[Main]</a> <a href="basicscript.htm">[Next]</a></font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font color="#000000" face="Courier New" size="2"><font color="#008000" face="Courier New"
+        size="2">//A&nbsp;script&nbsp;that&nbsp;does&nbsp;nothing.&nbsp;It&nbsp;is&nbsp;the&nbsp;basic&nbsp;outline&nbsp;that&nbsp;any&nbsp;basic&nbsp;script&nbsp;should&nbsp;follow
+        <br>
 //When&nbsp;activating&nbsp;a&nbsp;fomod&nbsp;with&nbsp;this&nbsp;script&nbsp;attached,&nbsp;it&nbsp;will&nbsp;be&nbsp;marked&nbsp;as&nbsp;active&nbsp;in&nbsp;fomm&nbsp;but&nbsp;no&nbsp;files&nbsp;will&nbsp;be&nbsp;installed
-<br>
+        <br>
 //This&nbsp;is&nbsp;the&nbsp;initial&nbsp;script&nbsp;that&nbsp;is&nbsp;displayed&nbsp;when&nbsp;you&nbsp;create&nbsp;a&nbsp;script&nbsp;on&nbsp;a&nbsp;fomod&nbsp;that&nbsp;doesn't&nbsp;yet&nbsp;have&nbsp;one
-<br>
-</font><font face="Courier New" size="2" color="#000000">
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;System;
-<br>
-<font face="Courier New" size="2" color="#0000FF">using</font></font><font face="Courier New" size="2" color="#000000">&nbsp;fomm.Scripting;
-<br>
-
-<br>
-<font face="Courier New" size="2" color="#0000FF">class</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#2B91AF">Script</font></font><font face="Courier New" size="2" color="#000000">&nbsp;:&nbsp;<font face="Courier New" size="2" color="#2B91AF">BaseScript</font></font><font face="Courier New" size="2" color="#000000">&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">public&nbsp;static</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">bool</font></font><font face="Courier New" size="2" color="#000000">&nbsp;OnActivate()&nbsp;{
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#008000">//Any&nbsp;tasks&nbsp;to&nbsp;be&nbsp;performed&nbsp;by&nbsp;the&nbsp;script&nbsp;go&nbsp;here</font></font><font face="Courier New" size="2" color="#000000">
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Courier New" size="2" color="#0000FF">return</font></font><font face="Courier New" size="2" color="#000000">&nbsp;<font face="Courier New" size="2" color="#0000FF">true</font></font><font face="Courier New" size="2" color="#000000">;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-<br>
-}</font><font face="Arial" size="2" color="#000000">
-<br>
-</font></font>
-
-</body></html>
+      </font><font color="#000000" face="Courier New" size="2">
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;System;
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">using</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;fomm.Scripting;
+        <br>
+        <br>
+        <font color="#0000FF" face="Courier New" size="2">class</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#2B91AF"
+          face="Courier New" size="2">Script</font></font><font color="#000000"
+        face="Courier New" size="2">&nbsp;:&nbsp;<font color="#2B91AF" face="Courier New"
+          size="2">BaseScript</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New" size="2">public&nbsp;static</font></font><font
+        color="#000000" face="Courier New" size="2">&nbsp;<font color="#0000FF"
+          face="Courier New" size="2">bool</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;OnActivate()&nbsp;{
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000" face="Courier New"
+          size="2">//Any&nbsp;tasks&nbsp;to&nbsp;be&nbsp;performed&nbsp;by&nbsp;the&nbsp;script&nbsp;go&nbsp;here</font></font><font
+        color="#000000" face="Courier New" size="2">
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000FF" face="Courier New"
+          size="2">return</font></font><font color="#000000" face="Courier New"
+        size="2">&nbsp;<font color="#0000FF" face="Courier New" size="2">true</font></font><font
+        color="#000000" face="Courier New" size="2">;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}
+        <br>
+        }</font><font color="#000000" face="Arial" size="2">
+      </font></font>
+  </body>
+</html>
