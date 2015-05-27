@@ -1,6 +1,6 @@
 [OPTIONS]
 Compatibility=1.1 or later
-Compiled file=fomm.chm
+Compiled file=..\flmm\data\fomm.chm
 Contents file=contpage.hhc
 Default topic=FalloutModManager.htm
 Display compile progress=No
